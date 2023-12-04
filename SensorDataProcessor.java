@@ -23,6 +23,10 @@ public class SensorDataProcessor { // Senson data and limits.
 
     // calculate data
 public double[][][] calculate(double d) {
+     if (d == 0) {
+            throw new IllegalArgumentException("d cannot be zero");
+        }
+
     int i, j, k = 0;
     double[][][] data2 = new double[data.length][data[0].length][data[0][0].length];
 
@@ -43,9 +47,9 @@ public double[][][] calculate(double d) {
         }
     }
     return data2;
-}
+ }
 
-public void writeDataToFile(double[][][] data2) {
+  public void writeDataToFile(double[][][] data2) {
     BufferedWriter out;
     try {
         out = new BufferedWriter(new FileWriter("RacingStatsData.txt"));
@@ -58,5 +62,5 @@ public void writeDataToFile(double[][][] data2) {
     } catch (Exception e) {
         System.out.println("Error= " + e);
     }
-}
+ }
 }
